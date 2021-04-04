@@ -1,0 +1,7 @@
+[package]
+name = "assets"
+dialect = "polkadot"
+
+dependencies = [
+    { git = "https://github.com/xpdiem/move-stdlib.git" }
+]

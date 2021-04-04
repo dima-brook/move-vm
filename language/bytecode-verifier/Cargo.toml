@@ -1,0 +1,33 @@
+[package]
+name = "bytecode-verifier"
+version = "0.1.0"
+authors = ["Diem Association <opensource@diem.com>"]
+description = "Diem bytecode verifier"
+repository = "https://github.com/diem/diem"
+homepage = "https://diem.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+hashbrown = "0.9"
+anyhow = {version ="1.0.34", default-features = false}
+mirai-annotations = { path = "../../mirai-annotations", default-features = false }
+petgraph = { git = "https://github.com/xpdiem/petgraph.git", default-features = false, features = ["graphmap", "stable_graph", "matrix_graph"]}
+borrow-graph = { path = "../borrow-graph", default-features = false }
+vm = { path = "../vm", version = "0.1.0", default-features = false }
+move-core-types = { path = "../move-core/types", default-features = false }
+
+[dev-dependencies]
+invalid-mutations = { path = "invalid-mutations", version = "0.1.0" }
+
+[features]
+default = ["std"]
+fuzzing = []
+
+std = [
+	"anyhow/std",
+	"move-core-types/std",
+	"borrow-graph/std",
+	"vm/std",
+]
